@@ -1,0 +1,396 @@
+/*NAVIGATION*/
+.navbar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  flex-direction: row;
+  background: linear-gradient(90deg, #3f3f3f -3.07%, #212a3b 100%);
+  box-shadow: 3px 1px 8px rgba(96, 140, 221, 0.432);
+  color: rgb(68, 67, 67);
+}
+.navbar-start{
+  display: inline-flex;
+}
+.leaflet-container{
+  height: 500px;
+  width: 100%;
+}
+.LeafletMap{
+  height: 500px;
+}
+
+@media only screen and (max-width: 1023px){
+  .navbar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+  .navbar-burger{
+    color: rgb(215, 231, 241);
+    padding-right: 4.8em;;
+    top: 50%;
+    /* -ms-transform: translateY(-50%);
+    transform: translateY(50%); */
+  }
+  .navbar-burger:hover {
+      color: aliceblue;
+      background: transparent;
+  }
+  .navbar-menu, .navbar-item {
+    background: linear-gradient(90deg, #3f3f3f -3.07%, #212a3b 100%);
+    /* box-shadow: 3px 3px 8px rgba(38, 38, 38, 0.25); */
+    color: rgb(32, 32, 32);
+    width: 100%;
+  }	
+}
+@media screen and (min-width: 800px){
+ .navbar-center {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-direction: row;
+ }
+ .navbar-link,.navbar-item {
+    align-items: center;
+    display: flex;
+    flex-basis: auto;
+    flex-grow: 1;
+    flex-shrink: 0;
+    vertical-align: center;
+    justify-content: center;
+ }
+ .navbar-dropdown, .navbar-item {
+   justify-content:left;
+   background-color: transparent;
+ }	
+
+}
+.navbar-start{
+  padding: 0;
+  position: center;
+  background-color: transparent;
+}
+/* HEADER */
+.fixedHeaderContainer {
+    position: fixed;
+    z-index: 9999;
+    background: linear-gradient(90deg, #000000 -3.07%, #3d3d3d 100%);
+    color: rgb(32, 32, 32);
+  }
+  .headerTitle {
+    color: transparent;
+    justify-content: left;
+    height: 100px;
+    width: 100%;
+    background-image: url(../images/icon.png);
+    background-repeat: no-repeat;
+    /* background-size: 100px;  */
+    background-position: 50% 50%;
+    outline: 0;
+  }
+  .headerImage{
+    margin-right: 10vw
+  }
+  /* FOOTER */
+.main {
+    display: flex;
+    
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  
+.hero-foot{
+    text-align: center;
+    position: absolute;
+    padding: 50px;
+    width: 100%;
+    background: linear-gradient(90deg, #3f3f3f -3.07%, #212a3b 100%);
+    box-shadow: 3px 1px 8px rgba(96, 140, 221, 0.432);
+}
+.section {
+    flex: 1;
+}
+/*MAIN ELEMENTS*/
+  .MainContent {
+    padding: 0;
+    min-height: 75vmax;
+    width: auto;
+    overflow-x: hidden;
+    background: linear-gradient(90deg, #565a61 -3.07%, #283347 100%);
+    color: rgb(32, 32, 32);
+    padding-bottom: 5vh;
+  }
+
+  .circletag {
+    display: block;
+    width: 15rem;
+    height: 15rem;
+    background: #E6E7ED;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-style: ridge;
+}
+.circleBlock {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10%;
+  height: 10%;
+}
+.title{
+  padding-top: 20px;
+
+  color: whitesmoke;
+}
+.subtitle{
+  color: rgba(221, 221, 221, 0.781);
+  text-align: center;
+  padding-top: 20px;
+}
+.Block__Divider--text {
+  width: 75%;
+  height: 7px;
+  margin: 20px 0;
+  background: #9bf0e1;
+}
+
+
+.card {
+  background-color: rgb(71, 71, 71); 
+  border: rgba(10, 10, 10, 0.1);
+  border-radius: 5px;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  color: #f7f4f4;
+  display: contents;
+  max-width: 50%;
+  justify-content: center;
+  position: relative;
+}
+
+.card-header {
+  background-color: transparent;
+  align-items: stretch;
+  box-shadow: 0 1px 2px rgba(10, 10, 10, 0.1);
+  display: flex;
+}
+
+.card-header-title {
+  color: #eeebeb;
+}
+
+.logo{
+  max-width: 40%;
+  min-width: 30%;
+  align-content: center;
+}
+
+.card-header-title.is-centered {
+  justify-content: center;
+}
+
+.card-header-icon {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 0.75rem;
+}
+
+.card-image {
+  display: block;
+  position: relative;
+}
+
+.card-content {
+  /* background-color: transparent; */
+  align-items: center;
+  padding: 1.5rem;
+}
+.card-small{
+  padding-left: 17%;
+  padding-right: 17%;
+  align-items: center;
+  
+}
+@media only screen and (max-width: 900px) {
+  .card {
+    background-color: rgb(71, 71, 71);
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    border: rgba(10, 10, 10, 0.1);
+    border-radius: 2px;
+    color: #f7f4f4;
+    display: contents;
+    max-width: 100%;
+    justify-content: center;
+    position: relative;
+  }
+  .card-small{
+    padding-left: 5%;
+    padding-right: 5%;
+    align-items: center;
+    
+  }
+}
+/*
+VIDEO Player
+*/
+
+.video-responsive{
+  overflow:hidden;
+  padding-bottom:56.25%;
+  padding-right: 15%;
+  padding-left: 15%;
+  position:relative;
+  height:0;
+}
+.video-responsive iframe{
+  left:0;
+  top:0;
+  height:100%;
+  width:100%;
+  padding-right: 8%;
+  padding-left: 8%;
+  position:absolute;
+}
+  /**
+  * --------------------------------------------------------------
+ * Copyright (c) 2017-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ * --------------------------------------------------------------
+ * 
+ * Main Elements brought in from Facebook Open Source 
+ */
+ .stripe {
+    margin-top: calc(-2vw - 10px);
+    margin-bottom: calc(-2vw - 10px);
+  
+    clip-path: polygon(
+      0% calc(2vw + 10px),
+      100% 0px,
+      100% calc(100% - 2vw - 10px),
+      0% 100%
+    );
+    -webkit-clip-path: polygon(
+      0% calc(2vw + 10px),
+      100% 0px,
+      100% calc(100% - 2vw - 10px),
+      0% 100%
+    );
+  }
+  
+  .bg-teal {
+    background: linear-gradient(87.29deg, #9bf0e1 17.71%, #36baa2 80.85%);
+  }
+  
+  .Block {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 900px;
+  }
+  .Block__LinkButton {
+    display: inline-flex;
+    flex-flow: row; 
+    /* justify-items: center; */
+    justify-content: space-around;
+    padding: 4.5vmax 9vw;
+    border-radius: 20px;
+    top: 50%;
+    background-color:transparent;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    font-family: Helvetica Neue, sans-serif;
+    letter-spacing: 1.5px;
+    text-align: center;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 25px;
+  }
+  .Block__LinkButton:hover {
+    background-color: #1d52a1a9;
+    color: rgb(247, 247, 247);
+  }
+  
+  @media only screen and (min-width: 1024px) {
+    .Block__LinkButton {
+        height: 53px;
+        width: 75px;
+        top: 10%;
+        border-radius: 0;
+        padding: 1rem 3rem 2rem 3rem;
+        vertical-align: middle;
+        text-align: center;
+        background-color: transparent;
+    }
+  }
+  
+  .Block__Divider {
+    width: 74px;
+    height: 7px;
+    margin: 20px 0;
+    background: #9bf0e1;
+  }
+  .Block__Divider--hidden {
+    width: 100%;
+    height: 100px;
+    margin: 0px 0;
+  }
+  .Block__Divider--hidden--large {
+    width: 100%;
+    height: 60px;
+    margin: 40px 0;
+  }
+  .ActionBlock {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+  }
+  .ActionBlock__Title {
+    margin: 15px 0;
+    color: #000;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+  }
+  .ActionBlock__Link {
+    margin: 15px 0;
+    padding: 14px 57px;
+  
+    background: #fff;
+    border-radius: 10px;
+  
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+  
+    text-align: center;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  
+    color: #000000;
+  }
+  .Breakpoint--narrow {
+    display: none;
+  }
+  .Breakpoint--wide {
+    display: contents;
+  }
+
+  
