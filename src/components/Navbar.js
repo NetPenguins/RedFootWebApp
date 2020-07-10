@@ -3,7 +3,7 @@ import styled from "styled-components"
 import NavbarLinks from "./NavbarLinks"
 import UserMenu from "./UserMenu"
 import $ from "jquery"
-
+//import {isDomAvailable} from "../lib/util"
 const Navigation = styled.nav`
   height: 8vh;
   width: 100%;
@@ -102,9 +102,9 @@ const LogoWrap = styled.div`
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false)
-  
-  navbarOpen ? $('html').addClass('scroll-lock') : $('html').removeClass('scroll-lock')
-
+  if (typeof window !== 'undefined'){
+    navbarOpen ? $('html').addClass('scroll-lock') : $('html').removeClass('scroll-lock')
+  }
   return (
     <Navigation>
       <UserMenu/>

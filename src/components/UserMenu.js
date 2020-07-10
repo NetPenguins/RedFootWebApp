@@ -4,7 +4,6 @@ import { getFirebase } from "../lib/util.js"
 import Login from "../pages/Login"
 import Logout from "../components/logout"
 import tempIcon from "../images/loginIcon.png"
-import $ from "jquery"
 
 const MenuBox = styled.div`
     flex-direction: column;

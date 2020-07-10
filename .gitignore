@@ -70,3 +70,4 @@ yarn-error.log
 .yarn-integrity
 src/components/header.js
 src/components/video.js
+.env.development

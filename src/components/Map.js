@@ -3,10 +3,9 @@ import PropTypes from 'prop-types'
 import { Map, TileLayer, Circle, Popup } from 'react-leaflet'
 import "leaflet/dist/leaflet.css"
 import '../styles/main.css'
-import config from '../../config'
 //import {read} from '../lib/database.js'
 //import { geoJSON } from 'leaflet'
-import { db } from "../lib/util";
+import { getFirebase } from "../lib/util";
 class LeafletMap extends React.Component {
 
     constructor(){
@@ -49,7 +48,7 @@ class LeafletMap extends React.Component {
     async readData(){
         var abc = []
         return new Promise(function(resolve, reject){
-            db.ref('predators/').on("value", function(snapshot) {
+            getFirebase().database().ref('predators/').on("value", function(snapshot) {
                 snapshot.forEach(function(childSnapshot){
                     abc.push(childSnapshot.val())
                     return resolve(abc)
@@ -62,7 +61,7 @@ class LeafletMap extends React.Component {
     }
   render() {
     let id = 'mapbox/streets-v11'
-    let accessToken = process.env.MAP_API || config.MAP_API
+    let accessToken = process.env.MAP_API
     if (typeof window !== 'undefined') {
       return (
         <Map center={this.props.position} zoom={this.props.zoom}>

@@ -11,10 +11,12 @@ const SightingsMap = () => {
   const [loading, setLoading] = React.useState(true);
   const [userPos, setUserPos] = React.useState({lat: 35.2271, lng: -80.8431})
 
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(getPosition);
-  }else{
-    console.log('User location not allowed')
+  if (typeof window !== 'undefined'){
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(getPosition);
+    }else{
+      console.log('User location not allowed')
+    }
   }
 
   function getPosition(position) {

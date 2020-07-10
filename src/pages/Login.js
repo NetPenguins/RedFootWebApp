@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons'
 import $ from 'jquery'
 import '../styles/main.css'
-import { auth, setUser } from "../lib/util";
+//import { auth, setUser } from "../lib/util";
+import {getFirebase, setUser} from "../lib/util"
 
 export default class Login extends Component {
   constructor() {
@@ -46,7 +47,7 @@ export default class Login extends Component {
   async googleSignIn() {
     try {
       await signInWithGoogle();
-      setUser(auth().currentUser)
+      setUser(getFirebase().auth().currentUser)
     } catch (error) {
       this.setState({ error: error.message });
     }
