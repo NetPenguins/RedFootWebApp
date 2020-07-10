@@ -35,10 +35,6 @@ export function setUser(user){
 export function getUser(){
   return currUser
 }
-// if(isDomAvailable && !firebaseInstance){
-//   firebase.initializeApp(firebaseConfig)
-//   firebaseInstance = firebase
-// }
 
 export function getFirebase(){
   if (typeof window !== 'undefined') {
@@ -46,10 +42,11 @@ export function getFirebase(){
     firebaseInstance = firebase.initializeApp(firebaseConfig);
     return firebaseInstance;
   }
-
   return null;
 }
 
-
-// export const auth = firebaseInstance && firebaseInstance.auth;
-// export const db = firebaseInstance && firebaseInstance.database();
+export const getAuth = () => {
+  if (typeof window !== 'undefined') {
+    return firebase.auth;
+  }
+}

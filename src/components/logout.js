@@ -5,7 +5,6 @@ const Logout = () => {
     return(
         <button className="button is-danger" id="logout" onClick={() => {
                 logout();
-                console.log(auth)
                 if(window){
                     window.location.reload();
                 }

@@ -3,7 +3,6 @@ import { db } from "./util";
 export function read() {
     var abc = []
     db.ref('predators/').on("value", function(snapshot) {
-        console.log(snapshot)
         console.log('inside ref')
         snapshot.forEach(function(childSnapshot){
             console.log(childSnapshot.val())
@@ -12,7 +11,6 @@ export function read() {
     }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
     })
-        console.log("abc = " + abc)
         return abc  
 }
 

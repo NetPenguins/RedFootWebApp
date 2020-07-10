@@ -37,9 +37,7 @@ class LeafletMap extends React.Component {
 
     async componentDidMount(){
        this.readData().then((d) => {
-            console.log(d)
             this.setState({Data: d})
-            console.log(this.state.Data)
             this.setState({isReady: true})
        })
        
@@ -71,7 +69,6 @@ class LeafletMap extends React.Component {
             zIndex={100}
             maxZoom={18}
           />
-          {console.log(this.state.isReady)}
           {this.state.isReady ? <Points Data={this.state.Data}/> : null}
         </Map>
       );
@@ -117,9 +114,7 @@ const Points = (Data) => {
         console.log('returning null')
         return (null)
     }
-    console.log(Data.Data)
     for(var a of Data.Data){
-        console.log(a.location)
         let lt = a.location.split(",")[0]
         let lg = a.location.split(",")[1]
         let timeStamp = new Date(a.time)
