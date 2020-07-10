@@ -1,4 +1,4 @@
-import config from '../../config.js'
+import config from "../../config"
 import firebase from 'firebase'
 import 'firebase/database'
 /**

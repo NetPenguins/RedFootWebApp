@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { Map, TileLayer, Circle, Popup } from 'react-leaflet'
 import "leaflet/dist/leaflet.css"
 import '../styles/main.css'
-import config from '../../config.js'
+import config from '../../config'
 //import {read} from '../lib/database.js'
-import { geoJSON } from 'leaflet'
+//import { geoJSON } from 'leaflet'
 import { db } from "../lib/util";
 class LeafletMap extends React.Component {
 
