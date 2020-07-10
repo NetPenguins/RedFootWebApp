@@ -5,6 +5,6 @@ export default props => {
     return (
         <Player>
             <source src="https://youtu.be/0X5xql1G4QY"/>
-        </Player>
+        </Player> 
     )
 }

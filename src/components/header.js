@@ -1,13 +1,30 @@
 //import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
-import "../components/main.css"
+import React, { useEffect, } from "react"
+import "../styles/main.css"
 import "bulma/css/bulma.css"
+import "../lib/util.js"
+import { getFirebase, getUser } from "../lib/util.js"
+//import {Link} from "gatsby"
+import {NavbarLinks} from "./NavbarLinks"
+import Login from "../pages/Login"
+import Logout from "../components/logout"
+import SightingsMap from "../pages/SightingsMap"
 //Create a basic header that is reactive.
 const Header = ({ siteTitle }) => {
   const [isActive, setisActive] = React.useState(false);
+  const [user, setUser] = React.useState(false)
+  let firebase = getFirebase()
+  
+  useEffect(() => {
+    if (!firebase) return;
+    return firebase.auth().onAuthStateChanged((user) => {
+      console.log('User:', user);
+      setUser(user ? true : false)
+    });
+   }, [firebase]);
   return(
-    <>
+  <>
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
@@ -17,9 +34,11 @@ const Header = ({ siteTitle }) => {
   <meta name="msapplication-TileColor" content="#da532c"/>
   <meta name="theme-color" content="#ffffff"/>
     <header className="navbar" role="navigation">
-      <nav className="navbar" role="navigation" aria-label="main navigation">
+      {/* <nav className="navbar navbar-brand" role="navigation" aria-label="main navigation"> */}
         <div className="navbar-brand">
-          {/* <a href="/"><img src="/icons/icon-72x72.png?v=b26f78d21142b47f8919030a5c0d04f5" height="50" width="50" alt="Chad Wilson Home" className="headerImage"></img></a> */}
+          <a class="image is-48x48">
+            <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png"/>
+          </a>
           <a
             onClick={() => { //create handle for burger drop down on mobile
               setisActive(!isActive);
@@ -39,13 +58,18 @@ const Header = ({ siteTitle }) => {
           id="navbarBasicExample"
           className={`navbar-menu ${isActive ? "is-active" : ""}`}
         >
-          <div className="navbar-start ">
-            <a className="Block__LinkButton" href="/">Home</a>
-            <a className="Block__LinkButton" href="/About/">About</a>
-            <a className="Block__LinkButton" href="/SightingsMap/">Sightings</a>
-          </div>
+            <div className="navbar-start" id="navbar">
+              {/* <a className="Block__LinkButton" href="/">Home</a>
+              <a className="Block__LinkButton" href="/About/">About</a>
+              <a className="Block__LinkButton" href="/SightingsMap/">Sightings</a> */}
+              {/* <Link to="/">Home</Link>
+              <Link to="/About">About</Link>
+              <Link to="/SightingsMap">Sightings</Link> */}
+              <NavbarLinks/>
+              {user ? <Logout/> : <Login/>}
+            </div>
         </div>
-      </nav>
+      {/* </nav> */}
     </header>
     </>
   )

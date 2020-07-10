@@ -2,30 +2,32 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Img from "gatsby-image"
+import Map from "../images/map.jpg"
 import { graphql } from 'gatsby';
 import "bulma/css/bulma.css"
 
 const IndexPage = (props) => (
     <Layout>
       <SEO title="Home" />
-      <div className="MainContent">
-        <div className="circleBlock  has-text-centered">
-          <Img fluid={props.data.imageOne.childImageSharp.fluid} className="spinAround circletag"/>
-          <div className="title is-size-1  has-text-centered">
-             Chad Wilson
+      <div class="parallax"></div>
+      <div id="tileSection">
+          <div class="tile is-ancestor">
+              <div class="tile is-4 is-vertical is-parent">
+                  <a href="./About" class="tile is-child box">
+                      <p class="title has-text-centered">Our Mission</p>
+                  </a> 
+                  <a href="./About" class="tile is-child box">
+                      <p class="title has-text-centered">Predator Info</p>
+                  </a> 
+              </div>
+              <div class="tile is-parent">
+                  <a href="./SightingsMap" class="tile is-child box">
+                      <h3 class="title has-text-centered">Recent Sightings</h3>
+                      <img src={Map} alt="mapimage"/>
+                  </a> 
+              </div>
           </div>
-        </div>
-        <div className="card has-text-centered">
-            <div className="card-content">
-              Systems Engineer, Software Developer, OSS Contributer, Cyber Security Enthusiaste
-            </div>
-        </div>
-        <div className="card has-text-centered">
-          <div className="title">
-            Systems Engineering Explained
-          </div>
-        </div>
-    </div>
+      </div>
   </Layout>
 )
 

@@ -2,10 +2,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import "bulma/css/bulma.css"
-import "./main.css"
+import "../styles/main.css"
 import Header from "./header"
 import Footer from "./footer"
-
+import Navbar from "./Navbar"
 const Layout = ({ children }) => {
   //left in so you can use Title in your Layout 
   const data = useStaticQuery(graphql`
@@ -19,7 +19,8 @@ const Layout = ({ children }) => {
   `)
     return (
       <main className="MainContent">
-        <Header/>
+        {/* <Header/> */}
+        <Navbar/>
         <div
           className="MainContent"
         >

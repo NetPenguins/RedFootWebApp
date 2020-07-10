@@ -1,7 +1,7 @@
 import "bulma/css/bulma.css";
 import link from "bulma/css/bulma.css";
 import React from "react";
-import "../components/main.css";
+import "../styles/main.css";
 const Footer = () => (
   <footer className="hero-foot is-dark">
     <div>
