@@ -16,12 +16,14 @@ const SightingsMap = () => {
       navigator.geolocation.getCurrentPosition(getPosition);
     }else{
       console.log('User location not allowed')
+      setLoading(false)
     }
   }
 
   function getPosition(position) {
     console.log(position)
     setUserPos({lat: position.coords.latitude, lng: position.coords.longitude})
+    setLoading(false)
   }
 
   return (
@@ -31,7 +33,7 @@ const SightingsMap = () => {
         <title>Sightings Map</title>
       </Helmet>
       {typeof window !== 'undefined' &&
-        <LeafletMap position={[userPos.lat, userPos.lng]} zoom={13}/>
+        <LeafletMap position={loading ? [userPos.lat, userPos.lng] : [userPos.lat, userPos.lng]} zoom={13}/>
       }
     </Layout>
   )

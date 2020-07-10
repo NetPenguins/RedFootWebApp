@@ -27,13 +27,6 @@ class LeafletMap extends React.Component {
     /** If set, will display a marker, which when clicked will display this text **/
     markerText: PropTypes.string
     }
-  
-
-//   static defaultProps = {
-//     position: [52, -1],
-//     zoom: 13,
-//     markerText: "Hello"
-//   }
 
     async componentDidMount(){
        this.readData().then((d) => {
@@ -110,6 +103,7 @@ function CreatePoint(data){
 
 const Points = (Data) => {
     let points = []
+    console.log('loaded data')
     if(!Data.Data){
         console.log('returning null')
         return (null)
