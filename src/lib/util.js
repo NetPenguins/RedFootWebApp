@@ -41,5 +41,5 @@ export function getFirebase(){
     return firebaseInstance
 }
 
-export const auth = firebase.auth;
-export const db = firebase.database();
+export const auth = firebase ? firebase.auth : null;
+export const db = firebase ? firebase.database() : null;
