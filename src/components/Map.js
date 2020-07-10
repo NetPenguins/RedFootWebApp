@@ -61,7 +61,7 @@ class LeafletMap extends React.Component {
     }
   render() {
     let id = 'mapbox/streets-v11'
-    let accessToken = process.env.MAP_API
+    let accessToken = process.env.GATSBY_MAP_API
     if (typeof window !== 'undefined') {
       return (
         <Map center={this.props.position} zoom={this.props.zoom}>
