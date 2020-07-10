@@ -6,8 +6,6 @@ const About = () => {
   return (
     <Layout>
       <SEO title="About" />
-      <div className="Block__Divider--hidden"/>
-      {/* <InfiniteImages site="oahu"/> */}
     </Layout>
   )
 }
