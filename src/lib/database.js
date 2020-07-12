@@ -1,17 +1,18 @@
-import { db } from "./util";
+import { getFirebase } from "./util";
 
-export function read() {
+export function readData(){
     var abc = []
-    db.ref('predators/').on("value", function(snapshot) {
-        console.log('inside ref')
-        snapshot.forEach(function(childSnapshot){
-            console.log(childSnapshot.val())
-            abc.push(childSnapshot.val())
-        }) 
-    }, function (errorObject) {
-        console.log("The read failed: " + errorObject.code);
+    return new Promise(function(resolve, reject){
+        getFirebase().database().ref('predators/').on("value", function(snapshot) {
+            snapshot.forEach(function(childSnapshot){
+                abc.push(childSnapshot.val())
+                return resolve(abc)
+            }) 
+        }, function (errorObject) {
+            console.log("The read failed: " + errorObject.code);
+            return reject()
+        })
     })
-        return abc  
 }
 
 // export function writeChats(message) {

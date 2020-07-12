@@ -103,7 +103,7 @@ const LogoWrap = styled.div`
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false)
   if (typeof window !== 'undefined'){
-    navbarOpen ? $('html').addClass('scroll-lock') : $('html').removeClass('scroll-lock')
+  navbarOpen ? $('html').addClass('scroll-lock') : $('html').removeClass('scroll-lock')
   }
   return (
     <Navigation>

@@ -1,141 +1,86 @@
-/*NAVIGATION*/
-.navbar {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
-  flex-direction: row;
-  background: linear-gradient(90deg, #3f3f3f -3.07%, #212a3b 100%);
-  box-shadow: 3px 1px 8px rgba(96, 140, 221, 0.432);
-  
-  color: rgb(68, 67, 67);
-}
-.navbar-start{
-  display: inline-flex;
-}
-.leaflet-container{
-  height: 100vh;
-  width: 100%;
-  z-index: 100;
-}
 .scroll-lock{
   overflow-y: hidden;
 }
+
 .LeafletMap{
-  height: 100%;
-  z-index: 100;
+  /* margin: 10vh auto 0 auto;
+  width: 95%;
+  height: 85vh;*/
+    z-index: 100; 
+    width: 100%; 
+    height: 100%; 
+    position:fixed;
+    left: 0px;
+    top: 0px;
 }
-@media screen and (min-width: 860px){
+
+#login-modal{
+  margin: auto auto;
+  width: fit-content;
+  height: fit-content;
+}
+
+@media screen and (min-width: 768px){
+  #tileSection{
+    width: 75%;
+    margin: 2vh auto;
+  }
+}
+@media screen and (max-width: 768px){
+  #tileSection{
+    width: 75%;
+    margin: 2vh auto;
+  }
+}
+a.tile{
+  border-radius: 9px;
+  text-emphasis: bold;
+  color: azure;
+  background: rgba(60, 60, 80, 0.801);
+  box-shadow: 0 0 3px rgba(49, 49, 92, 0.582);
+}
+a.tile:hover{
+  transform: scale(1.04);
+  box-shadow: 0 0 6px rgba(27, 110, 218, 0.507);
+  transition: all 0.2s ease-in;
+}
+@media screen and (min-width: 768px){
   .parallax{
       padding-top: 100%;
       background-image: url('../images/im.jpg');
-      height: 100%;
+      height: 100vmax;
       background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
   }
 }
-@media screen and (max-width: 860px){
+@media screen and (max-width: 768px){
   .parallax{
       padding-top: 100%;
       background-image: url('../images/im.jpg');
-      height: 100%;
+      height: 100vmax;
       background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
   }
+  /* .LeafletMap{
+    margin-top: 2vh;
+  } */
 }
+
 Link{
   color: white;
   color:rgb(68, 67, 67);
   background-color: rgb(215, 231, 241);
 }
-@media only screen and (max-width: 1023px){
-  .navbar{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-wrap: nowrap;
-  }
-  .navbar-burger{
-    color: rgb(215, 231, 241);
-    padding-right: 4.8em;;
-    top: 50%;
-    /* -ms-transform: translateY(-50%);
-    transform: translateY(50%); */
-  }
-  .navbar-burger:hover {
-      color: aliceblue;
-      background: transparent;
-  }
-  .navbar-menu, .navbar-item {
-    background: linear-gradient(90deg, #3f3f3f -3.07%, #212a3b 100%);
-    /* box-shadow: 3px 3px 8px rgba(38, 38, 38, 0.25); */
-    color: rgb(32, 32, 32);
-    width: 100%;
-  }	
-}
+
 figure .image{
   float:right
 }
-@media screen and (min-width: 800px){
- .navbar-center {
-    display: flex;
-    justify-content: stretch;
-    align-items: stretch;
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-direction: row;
- }
- .navbar-link,.navbar-item {
-    align-items: center;
-    display: flex;
-    flex-basis: auto;
-    flex-grow: 1;
-    flex-shrink: 0;
-    vertical-align: center;
-    justify-content: center;
- }
- .navbar-dropdown, .navbar-item {
-   justify-content:left;
-   background-color: transparent;
- }	
-}
-.navbar-start{
-  padding: 0;
-  position: center;
-  background-color: transparent;
-}
-/* HEADER */
-.fixedHeaderContainer {
-    position: fixed;
-    z-index: 9999;
-    background: linear-gradient(90deg, #000000 -3.07%, #3d3d3d 100%);
-    color: rgb(32, 32, 32);
-  }
-  .headerTitle {
-    color: transparent;
-    justify-content: left;
-    height: 100px;
-    width: 100%;
-    background-image: url(../images/icon.png);
-    background-repeat: no-repeat;
-    /* background-size: 100px;  */
-    background-position: 50% 50%;
-    outline: 0;
-  }
-  .headerImage{
-    margin-right: 10vw
-  }
   /* FOOTER */
-.main {
-    display: flex;
-    
-    min-height: 100vh;
-    flex-direction: column;
-  }
+
   
 .hero-foot{
     text-align: center;
@@ -145,9 +90,7 @@ figure .image{
     background: linear-gradient(90deg, #3f3f3f -3.07%, #212a3b 100%);
     box-shadow: 3px 1px 8px rgba(96, 140, 221, 0.432);
 }
-.section {
-    flex: 1;
-}
+
 /*MAIN ELEMENTS*/
   .MainContent {
     padding: 0;
@@ -158,31 +101,8 @@ figure .image{
     color: rgb(32, 32, 32);
     padding-bottom: 5vh;
   }
-
-  .circletag {
-    display: block;
-    width: 15rem;
-    height: 15rem;
-    background: #E6E7ED;
-    text-align: center;
-    align-content: center;
-    align-items: center;
-    border-radius: 100%;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
-    border-style: ridge;
-}
-.circleBlock {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  padding-top: 10%;
-  height: 10%;
-}
 .title{
   padding-top: 20px;
-
   color: whitesmoke;
 }
 .subtitle{
@@ -190,13 +110,6 @@ figure .image{
   text-align: center;
   padding-top: 20px;
 }
-.Block__Divider--text {
-  width: 75%;
-  height: 7px;
-  margin: 20px 0;
-  background: #9bf0e1;
-}
-
 
 .card {
   background-color: rgb(71, 71, 71); 
@@ -255,7 +168,7 @@ figure .image{
   align-items: center;
   
 }
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 768px) {
   .card {
     background-color: rgb(71, 71, 71);
     box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);

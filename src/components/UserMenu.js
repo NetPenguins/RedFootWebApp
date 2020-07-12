@@ -43,42 +43,43 @@ const UserMenu = () => {
   const [currUser, setUser] = React.useState()
   const [imgURL, setImg] = React.useState()
   const firebase = getFirebase()
-
-  //navbarOpen ? $('html').addClass('scroll-lock') : $('html').removeClass('scroll-lock')
   
   useEffect(() => {
-  if (!firebase) return;
-  return firebase.auth().onAuthStateChanged((user) => {
-      console.log(user);
-      setUser(user ? user : null)
-      if(!user){
-          setImg(tempIcon)
-      }else{
-        setImg(user.photoURL ? user.photoURL : tempIcon)
-      }
-  });
+    if (!firebase) return;
+    return firebase.auth().onAuthStateChanged((user) => {
+        console.log(user);
+        setUser(user ? user : null)
+        if(!user){
+            setImg(tempIcon)
+        }else{
+          setImg(user.photoURL ? user.photoURL : tempIcon)
+        }
+    });
   }, [firebase]);
 
   return (
-      <>
-      <LogoWrap 
-        navbarOpen={navbarOpen}
-        onMouseOver={() =>  setNavbarOpen(!navbarOpen)} 
-        >
-        <a class="image is-64x64">
-            <img class="is-rounded" src={imgURL}/>
-        </a>
-      </LogoWrap>
-      {navbarOpen ? (
-        <MenuBox navbarOpen={navbarOpen} onMouseLeave={() => setNavbarOpen(!navbarOpen)}>
-          {currUser ? <Logout/> : <Login/>}
-        </MenuBox>
-      ) : (
-        <MenuBox open navbarOpen={navbarOpen} onMouseLeave={() => setNavbarOpen(!navbarOpen)}>
-          {currUser ? <Logout/> : <Login/>}
-        </MenuBox>
-      )}
-      </>
+      <div>
+        <LogoWrap id="UserLogo"
+          navbarOpen={navbarOpen}
+          onClick={() => {
+              setNavbarOpen(!navbarOpen)
+          }}>
+          <a class="image is-64x64">
+              <img class="is-rounded" src={imgURL || tempIcon}/>
+          </a>
+        </LogoWrap>
+        {navbarOpen ? (
+          <MenuBox id="UserMenu" navbarOpen={navbarOpen} onMouseLeave={() => {
+              setNavbarOpen(!navbarOpen)
+          }}>
+            {currUser ? <Logout/> : <Login/>}
+          </MenuBox>
+        ) : (
+          <MenuBox open id="UserMenu" navbarOpen={navbarOpen} onMouseLeave={() => setNavbarOpen(!navbarOpen)}>
+            {currUser ? <Logout/> : <Login/>}
+          </MenuBox>
+        )}
+      </div>
   )
 }
 

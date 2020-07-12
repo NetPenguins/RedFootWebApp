@@ -71,3 +71,4 @@ yarn-error.log
 src/components/header.js
 src/components/video.js
 .env.development
+src/components/MapMenu.js

@@ -27,7 +27,8 @@ const SightingsMap = () => {
   }
 
   return (
-    <Layout>
+    // <Layout>
+    <>
       <SEO title="SightingsMap" />
       <Helmet>
         <title>Sightings Map</title>
@@ -35,7 +36,8 @@ const SightingsMap = () => {
       {typeof window !== 'undefined' &&
         <LeafletMap position={loading ? [userPos.lat, userPos.lng] : [userPos.lat, userPos.lng]} zoom={13}/>
       }
-    </Layout>
+    </>
+    // </Layout>
   )
 }
 

@@ -65,25 +65,35 @@ export default class Login extends Component {
   render() {
     return (
       <>
+      {console.log(this.props.noButton)}
+      {!this.props.noButton && 
       <button className="button is-primary" id="login" onClick={() => {
         this.toggleModal()
       }}>
         Login
-      </button>
-      <div className='modal top' id='login-modal'>
+      </button>}
+      <LoginModal googleSignIn={this.googleSignIn} githubSignIn={this.githubSignIn} toggleModal={this.toggleModal} error={this.state.error} noButton={this.props.noButton}/>
+      </>
+    );
+  }
+}
+
+export const LoginModal = (props) => {
+  return(
+    <div className={`modal top ${props.noButton ? "is-active" : ""}`}id='login-modal'>
         <div className="box fit">
             <button class="delete is-pulled-right" aria-label="close" onClick={()=>{
-              this.toggleModal()
+              props.toggleModal()
             }}></button>
             <p className="title is-size-2 has-text-dark has-text-centered">You can log in with any of these services</p>
             <div className="box has-text-centered">
-              <button className="button is-danger is-medium" type="button" onClick={this.googleSignIn}>
+              <button className="button is-danger is-medium" type="button" onClick={props.googleSignIn}>
                 <span className="icon is-small">
                   <FontAwesomeIcon icon={faGoogle}/>
                 </span>
                 <span>Sign in</span>
               </button>
-              <button className="button is-medium" type="button" onClick={this.githubSignIn}>
+              <button className="button is-medium" type="button" onClick={props.githubSignIn}>
                 <span className="icon is-small">
                   <FontAwesomeIcon icon={faGithub}/>
                 </span>
@@ -92,13 +102,11 @@ export default class Login extends Component {
             </div>
             <hr />
             <div className="field">
-              {this.state.error ? (
-                <p className="has-text-danger has-text-centered">{`${this.state.error}`}</p>
+              {props.error ? (
+                <p className="has-text-danger has-text-centered">{`${props.error}`}</p>
               ) : null}
             </div>
         </div>
       </div>
-      </>
-    );
-  }
+  )
 }
