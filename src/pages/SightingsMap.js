@@ -1,5 +1,5 @@
 import React, {useRef} from "react"
-import Layout from "../components/layout"
+//import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Helmet from 'react-helmet'
 import LeafletMap from '../components/Map';
@@ -10,13 +10,16 @@ import "../styles/main.css"
 const SightingsMap = () => {
   const [loading, setLoading] = React.useState(true);
   const [userPos, setUserPos] = React.useState({lat: 35.2271, lng: -80.8431})
-
-  if (typeof window !== 'undefined'){
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(getPosition);
-    }else{
-      console.log('User location not allowed')
-      setLoading(false)
+  const [Loaded, setLoaded] = React.useState(false);
+  if (typeof window !== 'undefined' && window.document && window.document.createElement){
+    if(!Loaded){
+      setLoaded(true)
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(getPosition);
+      }else{
+        console.log('User location not allowed')
+        setLoading(false)
+      }
     }
   }
 
