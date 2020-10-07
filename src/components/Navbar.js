@@ -5,7 +5,7 @@ import UserMenu from "./UserMenu"
 import $ from "jquery"
 //import {isDomAvailable} from "../lib/util"
 const Navigation = styled.nav`
-  height: 8vh;
+  height: 10vh;
   width: 100%;
   display: flex;
   background: linear-gradient(90deg, #3f3f3f -3.07%, #212a3b 100%);

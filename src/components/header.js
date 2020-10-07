@@ -59,12 +59,6 @@ const Header = ({ siteTitle }) => {
           className={`navbar-menu ${isActive ? "is-active" : ""}`}
         >
             <div className="navbar-start" id="navbar">
-              {/* <a className="Block__LinkButton" href="/">Home</a>
-              <a className="Block__LinkButton" href="/About/">About</a>
-              <a className="Block__LinkButton" href="/SightingsMap/">Sightings</a> */}
-              {/* <Link to="/">Home</Link>
-              <Link to="/About">About</Link>
-              <Link to="/SightingsMap">Sightings</Link> */}
               <NavbarLinks/>
               {user ? <Logout/> : <Login/>}
             </div>
