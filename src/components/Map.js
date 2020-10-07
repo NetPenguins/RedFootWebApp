@@ -7,8 +7,15 @@ import { Link } from 'gatsby'
 import "leaflet/dist/leaflet.css"
 import '../styles/main.css'
 import { Sidebar, Tab } from 'react-leaflet-sidetabs'
+import {
+    Button,
+    Snackbar,
+} from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import { FiHome, FiChevronRight, FiPlusSquare, FiSettings, FiLogIn } from "react-icons/fi";
 import '../styles/mapmenu.css'
+
 
 export default class LeafletMap extends React.Component {
 
@@ -19,7 +26,8 @@ export default class LeafletMap extends React.Component {
             isReady: false,
             collapsed: true,
             selected: 'home',
-            mapType: 'mapbox/streets-v11'
+            mapType: 'mapbox/streets-v11',
+            snackOpen: false,
         };
     }
     
@@ -60,6 +68,19 @@ export default class LeafletMap extends React.Component {
         })
         this.onClose()
     }
+
+    onSnackOpen(){
+        this.setState({
+            snackOpen: true
+        })
+    }
+
+    onSnackClose(){
+        this.setState({
+            snackOpen: false
+        })
+    }
+    
   render() {
     let id = this.state.mapType
     let accessToken = process.env.GATSBY_MAP_API
@@ -92,7 +113,34 @@ export default class LeafletMap extends React.Component {
                 </div>
            </Tab>
            <Tab id="add" header="Add Sighting" icon={<FiPlusSquare />}>
-            <p>The noblest search is the search for excellence!</p>
+            <p>Addition funcitionality will be housed here!</p>
+            <Button 
+                color="primary"
+                endIcon={<FiPlusSquare/>}
+                onClick={() => this.onSnackOpen()}
+            >
+                Add Sighting
+            </Button>
+            <Snackbar
+                anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+                }}
+                open={this.state.snackOpen}
+                autoHideDuration={6000}
+                onClose={() => this.onSnackClose()}
+                message="Note archived"
+                action={
+                <>
+                    <Button color="secondary" size="small" onClick={() => this.onSnackClose()}>
+                    UNDO
+                    </Button>
+                    <IconButton size="small" aria-label="close" color="inherit" onClick={() => this.onSnackClose()}>
+                        <CloseIcon fontSize="small" />
+                    </IconButton>
+                </>
+                }
+            />
            </Tab>
            <Tab id="settings" header="Settings" anchor="bottom" icon={<FiSettings />}>
             <a onClick={() => this.mapChoice('mapbox/dark-v10')}>

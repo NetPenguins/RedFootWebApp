@@ -1,5 +1,4 @@
 import React, {useRef} from "react"
-//import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Helmet from 'react-helmet'
 import LeafletMap from '../components/Map';
@@ -30,7 +29,6 @@ const SightingsMap = () => {
   }
 
   return (
-    // <Layout>
     <>
       <SEO title="SightingsMap" />
       <Helmet>
@@ -40,7 +38,6 @@ const SightingsMap = () => {
         <LeafletMap position={loading ? [userPos.lat, userPos.lng] : [userPos.lat, userPos.lng]} zoom={13}/>
       }
     </>
-    // </Layout>
   )
 }
 
