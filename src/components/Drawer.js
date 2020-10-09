@@ -231,7 +231,6 @@ const MiniDrawer = ({ Element }) => {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        {console.log(Element.state)}
         {Element}
       </main>
     </div>
