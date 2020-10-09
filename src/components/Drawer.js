@@ -19,6 +19,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import HomeIcon from '@material-ui/icons/Home';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import LayersIcon from '@material-ui/icons/Layers';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import UserMenu from './UserMenu'
 import {
     Button,
@@ -101,7 +103,7 @@ const MiniDrawer = ({ Element }) => {
   const [open, setOpen] = React.useState(false);
   const [mapChoice, setMapChoice] = React.useState('string')
   const [snackOpen, setSnackOpen] = React.useState(false)
-
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -122,6 +124,14 @@ const MiniDrawer = ({ Element }) => {
         setSnackOpen(false)
     }
 
+    const handleClick = (event) => {
+        console.log(event)
+        setAnchorEl(event.currentTarget);
+      };
+    
+    const handleClose = () => {
+    setAnchorEl(null);
+    };
 
   return (
     <div className={classes.root}>
@@ -198,17 +208,30 @@ const MiniDrawer = ({ Element }) => {
                 </>
                 }
             />
-            <ListItem button key={'Map Settings'} onClick={() => HandleOverlayClick()}>
+            <ListItem button key={'Map Settings'} onClick={handleClick}>
                 <ListItemIcon><LayersIcon /></ListItemIcon>
                 <ListItemText primary={'Map Settings'} />
             </ListItem>
+            <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+            >
+                <MenuItem onClick={() => {setMapChoice('mapbox/dark-v10'); handleClose()}}><img src="https://assets.website-files.com/5e83362767d71ffd59a0c8a9/5ea01810f9a5b1c55841ee6f_ipad-map%20dark-p-800.png" alt="darkmap"/></MenuItem>
+                <MenuItem onClick={() => {setMapChoice('mapbox/streets-v11'); handleClose()}}><img src="https://assets.website-files.com/5e83362767d71ffd59a0c8a9/5ea01b977fb48a501b898a93_ipad-map%20streets.png" alt="streetsmap"/></MenuItem>
+                <MenuItem onClick={() => {setMapChoice('mapbox/outdoors-v11'); handleClose()}}><img src="https://assets.website-files.com/5e83362767d71ffd59a0c8a9/5ea01bd0779fa266f900ba3c_ipad-map%20outdoors-p-800.png" alt="terrainmap"/></MenuItem>
+                <MenuItem onClick={() => {setMapChoice('mapbox/satellite-streets-v11'); handleClose()}}><img src="https://assets.website-files.com/5e83362767d71ffd59a0c8a9/5ea01c39578be545290d4aae_ipad-map%20satellite-p-800.png" alt="satellitemap"/></MenuItem>
+                <MenuItem onClick={() => {setMapChoice('mapbox/light-v10'); handleClose()}}><img src="https://assets.website-files.com/5e83362767d71ffd59a0c8a9/5ea012c7779fa2ca49008383_ipad-map.png" alt="lightmap"/></MenuItem>
+            </Menu>
         </List>
         <Divider />
         {/* <UserMenu /> */}
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        {console.log(Element.props.position)}
+        {console.log(Element.state)}
         {Element}
       </main>
     </div>

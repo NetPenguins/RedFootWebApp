@@ -41,7 +41,8 @@ export default class LeafletMap extends React.Component {
     zoom: PropTypes.number,
 
     /** If set, will display a marker, which when clicked will display this text **/
-    markerText: PropTypes.string
+    markerText: PropTypes.string,
+
     }
 
     async componentDidMount(){
