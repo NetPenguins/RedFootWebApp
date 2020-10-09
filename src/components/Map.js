@@ -7,6 +7,7 @@ import { Link } from 'gatsby'
 import "leaflet/dist/leaflet.css"
 import '../styles/main.css'
 import { Sidebar, Tab } from 'react-leaflet-sidetabs'
+import Drawer from '../components/Drawer'
 import {
     Button,
     Snackbar,
@@ -69,17 +70,7 @@ export default class LeafletMap extends React.Component {
         this.onClose()
     }
 
-    onSnackOpen(){
-        this.setState({
-            snackOpen: true
-        })
-    }
-
-    onSnackClose(){
-        this.setState({
-            snackOpen: false
-        })
-    }
+    
     
   render() {
     let id = this.state.mapType
@@ -96,7 +87,7 @@ export default class LeafletMap extends React.Component {
             />
             {this.state.Data.length !== 0 && this.state.isReady && <Points Data={this.state.Data}></Points>}
             </Map>
-            <Sidebar
+            {/* <Sidebar
                 id="sidebar"
                 position="right"
                 collapsed={this.state.collapsed}
@@ -121,26 +112,7 @@ export default class LeafletMap extends React.Component {
             >
                 Add Sighting
             </Button>
-            <Snackbar
-                anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-                }}
-                open={this.state.snackOpen}
-                autoHideDuration={6000}
-                onClose={() => this.onSnackClose()}
-                message="Note archived"
-                action={
-                <>
-                    <Button color="secondary" size="small" onClick={() => this.onSnackClose()}>
-                    UNDO
-                    </Button>
-                    <IconButton size="small" aria-label="close" color="inherit" onClick={() => this.onSnackClose()}>
-                        <CloseIcon fontSize="small" />
-                    </IconButton>
-                </>
-                }
-            />
+            
            </Tab>
            <Tab id="settings" header="Settings" anchor="bottom" icon={<FiSettings />}>
             <a onClick={() => this.mapChoice('mapbox/dark-v10')}>
@@ -159,7 +131,7 @@ export default class LeafletMap extends React.Component {
                 <img src="https://assets.website-files.com/5e83362767d71ffd59a0c8a9/5ea012c7779fa2ca49008383_ipad-map.png" alt="lightmap"></img>
             </a>
            </Tab>           
-        </Sidebar>
+        </Sidebar> */}
         </div>
       );
     }

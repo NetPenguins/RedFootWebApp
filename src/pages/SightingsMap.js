@@ -5,7 +5,7 @@ import LeafletMap from '../components/Map';
 import '../lib/util.js'
 import "bulma/css/bulma.css"
 import "../styles/main.css"
-
+import Drawer from '../components/Drawer'
 const SightingsMap = () => {
   const [loading, setLoading] = React.useState(true);
   const [userPos, setUserPos] = React.useState({lat: 35.2271, lng: -80.8431})
@@ -34,9 +34,12 @@ const SightingsMap = () => {
       <Helmet>
         <title>Sightings Map</title>
       </Helmet>
-      {typeof window !== 'undefined' &&
+      <Drawer Element={
+        typeof window !== 'undefined' &&
         <LeafletMap position={loading ? [userPos.lat, userPos.lng] : [userPos.lat, userPos.lng]} zoom={13}/>
       }
+      />
+      
     </>
   )
 }
