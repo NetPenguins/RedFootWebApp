@@ -5,7 +5,7 @@ import UserMenu from "./UserMenu"
 import $ from "jquery"
 //import {isDomAvailable} from "../lib/util"
 const Navigation = styled.nav`
-  height: 8vh;
+  height: 10vh;
   width: 100%;
   display: flex;
   background: linear-gradient(90deg, #3f3f3f -3.07%, #212a3b 100%);
@@ -55,7 +55,7 @@ const Navbox = styled.div`
     background: linear-gradient(90deg, #3f3f3f -3.07%, #212a3b 100%);
     color: rgb(32, 32, 32);
     transition: all 0.3s ease-in;
-    top: 8vh;
+    top: 10vh;
     right: ${props => (props.open ? "-100%" : "0")};
   }
 `

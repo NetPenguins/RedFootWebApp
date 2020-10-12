@@ -21,7 +21,7 @@ const MenuBox = styled.div`
     background: linear-gradient(90deg, #3f3f3f -3.07%, #212a3b 100%);
     color: rgb(32, 32, 32);
     transition: all 0.3s ease-in;
-    top: 8vh;
+    top: 10vh;
     left: ${props => (props.open ? "-100%" : "0")};
     @media (max-width: 768px) {
         max-width: 70%;

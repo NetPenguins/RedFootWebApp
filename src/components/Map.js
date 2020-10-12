@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import PropTypes, { func } from 'prop-types'
 import { Map, TileLayer, Circle, Popup } from 'react-leaflet'
 import UserMenu from './UserMenu'
 import { readData } from '../lib/database'
@@ -7,8 +7,16 @@ import { Link } from 'gatsby'
 import "leaflet/dist/leaflet.css"
 import '../styles/main.css'
 import { Sidebar, Tab } from 'react-leaflet-sidetabs'
+import Drawer from '../components/Drawer'
+import {
+    Button,
+    Snackbar,
+} from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import { FiHome, FiChevronRight, FiPlusSquare, FiSettings, FiLogIn } from "react-icons/fi";
 import '../styles/mapmenu.css'
+
 
 export default class LeafletMap extends React.Component {
 
@@ -19,7 +27,8 @@ export default class LeafletMap extends React.Component {
             isReady: false,
             collapsed: true,
             selected: 'home',
-            mapType: 'mapbox/streets-v11'
+            mapType: 'mapbox/streets-v11',
+            snackOpen: false,
         };
     }
     
@@ -32,19 +41,18 @@ export default class LeafletMap extends React.Component {
     zoom: PropTypes.number,
 
     /** If set, will display a marker, which when clicked will display this text **/
-    markerText: PropTypes.string
+    markerText: PropTypes.string,
+
     }
 
     async componentDidMount(){
        readData().then((d) => {
-            console.log(this.state)
             this.setState({Data: d})
             this.setState({isReady: true})
        }).catch((err) => {
            console.log("HERE   " + err)
        })
     }
-
     onClose() {
         this.setState({collapsed: true});
     }
@@ -63,6 +71,8 @@ export default class LeafletMap extends React.Component {
         this.onClose()
     }
 
+    
+    
   render() {
     let id = this.state.mapType
     let accessToken = process.env.GATSBY_MAP_API
@@ -76,9 +86,9 @@ export default class LeafletMap extends React.Component {
                 zIndex={100}
                 maxZoom={18}
             />
-            {this.state.isReady ? <Points Data={this.state.Data}/> : null}
+            {this.state.Data.length !== 0 && this.state.isReady && <Points Data={this.state.Data}></Points>}
             </Map>
-            <Sidebar
+            {/* <Sidebar
                 id="sidebar"
                 position="right"
                 collapsed={this.state.collapsed}
@@ -95,7 +105,15 @@ export default class LeafletMap extends React.Component {
                 </div>
            </Tab>
            <Tab id="add" header="Add Sighting" icon={<FiPlusSquare />}>
-            <p>The noblest search is the search for excellence!</p>
+            <p>Addition funcitionality will be housed here!</p>
+            <Button 
+                color="primary"
+                endIcon={<FiPlusSquare/>}
+                onClick={() => this.onSnackOpen()}
+            >
+                Add Sighting
+            </Button>
+            
            </Tab>
            <Tab id="settings" header="Settings" anchor="bottom" icon={<FiSettings />}>
             <a onClick={() => this.mapChoice('mapbox/dark-v10')}>
@@ -114,89 +132,99 @@ export default class LeafletMap extends React.Component {
                 <img src="https://assets.website-files.com/5e83362767d71ffd59a0c8a9/5ea012c7779fa2ca49008383_ipad-map.png" alt="lightmap"></img>
             </a>
            </Tab>           
-        </Sidebar>
+        </Sidebar> */}
         </div>
       );
     }
   }
 }
 
-function CreatePoint(data){
-    return(
-        [
-        <div className="card-content">
-            <div className="media">
-                <div className="media-left">
-                    <figure className="image is-64x64">
-                        <img src={data.img} alt={data.name}/>
-                    </figure>
-                </div>
-                <div className="media-content">
-                    <p className="title is-3 has-text-white-ter">
-                        {data.name}
-                    </p>
-                    <p className="subtitle is-6 has-text-grey-lighter">
-                        {`@${data.user}`}
-                    </p>
-                </div>
-            </div>
-            <p className="content">
-                {data.des}
-            </p>
-            <footer className="cardFoot" id="cardFoot">
-                <div className="timeStamp">
-                    {new Date(data.time)}
-                </div>
-            </footer>
-        </div>
-        ]
-    )
-} 
+// function CreatePoint(data){
+//     return(
+//         [
+//         <div className="card-content">
+//             <div className="media">
+//                 <div className="media-left">
+//                     <figure className="image is-64x64">
+//                         <img src={data.img} alt={data.name}/>
+//                     </figure>
+//                 </div>
+//                 <div className="media-content">
+//                     <p className="title is-3 has-text-white-ter">
+//                         {data.name}
+//                     </p>
+//                     <p className="subtitle is-6 has-text-grey-lighter">
+//                         {`@${data.user}`}
+//                     </p>
+//                 </div>
+//             </div>
+//             <p className="content">
+//                 {data.des}
+//             </p>
+//             <footer className="cardFoot" id="cardFoot">
+//                 <div className="timeStamp">
+//                     {new Date(data.time)}
+//                 </div>
+//             </footer>
+//         </div>
+//         ]
+//     )
+// } 
 
-const Points = (Data) => {
-    let points = []
-    console.log('loaded data')
-    if(!Data.Data){
-        console.log('returning null')
-        return (null)
+class Points extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            points: []
+        };
     }
-    for(var a of Data.Data){
-        let lt = a.location.split(",")[0]
-        let lg = a.location.split(",")[1]
-        let timeStamp = new Date(a.time)
-        points.push(<Circle center={[lt,lg]} radius={100} color='#eb4034' fillColor='#eb4034' fillOpacity={.55}>
-                        <Popup>
-                            <div className="card-content">
-                                <div className="media">
-                                    <div className="media-left">
-                                        <figure className="image is-64x64">
-                                            <img src={a.img} alt={a.name}/>
-                                        </figure>
+    shouldComponentUpdate(nextProps, nextState) {
+        return this.state.value != nextState.value;
+    }
+    render(){
+        console.log('loaded data')
+        if(!this.props.Data){
+            console.log('returning null')
+            return (null)
+        }
+        for(var a of this.props.Data){
+            let lt = a.location.split(",")[0]
+            let lg = a.location.split(",")[1]
+            let timeStamp = new Date(a.time)
+            this.state.points.push(<Circle center={[lt,lg]} radius={100} color='#eb4034' fillColor='#eb4034' fillOpacity={.55}>
+                            <Popup>
+                                <div className="card-content">
+                                    <div className="media">
+                                        <div className="media-left">
+                                            <figure className="image is-64x64">
+                                                <img src={a.img} alt={a.name}/>
+                                            </figure>
+                                        </div>
+                                        <div className="media-content">
+                                            <p className="title is-3 has-text-white-ter">
+                                                {a.name}
+                                            </p>
+                                            <p className="subtitle is-6 has-text-grey-lighter">
+                                                {`@${a.user}`}
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div className="media-content">
-                                        <p className="title is-3 has-text-white-ter">
-                                            {a.name}
-                                        </p>
-                                        <p className="subtitle is-6 has-text-grey-lighter">
-                                            {`@${a.user}`}
-                                        </p>
-                                    </div>
+                                    <p className="content">
+                                        {a.des}
+                                    </p>
+                                    <footer className="cardFoot" id="cardFoot">
+                                        <div className="timeStamp">
+                                            {timeStamp.toTimeString()}
+                                        </div>
+                                    </footer>
                                 </div>
-                                <p className="content">
-                                    {a.des}
-                                </p>
-                                <footer className="cardFoot" id="cardFoot">
-                                    <div className="timeStamp">
-                                        {timeStamp.toTimeString()}
-                                    </div>
-                                </footer>
-                            </div>
-                        </Popup>
-                    </Circle>)
+                            </Popup>
+                        </Circle>)
+        }
+        return (
+            this.state.points
+        )
     }
-    return (
-        points
-    )
 }
 
 

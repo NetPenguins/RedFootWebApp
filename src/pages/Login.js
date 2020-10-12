@@ -14,7 +14,8 @@ export default class Login extends Component {
       error: null,
       modal: false,
       email: "",
-      password: ""
+      password: "",
+      loaded: false
     };
     this.toggleModal = this.toggleModal.bind(this);
     this.handleChange = this.handleChange.bind(this);

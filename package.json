@@ -1,7 +1,7 @@
 {
-  "name": "chadwilson",
+  "name": "redfoot",
   "private": true,
-  "description": "Portfolio Site",
+  "description": "Wild Life Reporting Application",
   "version": "0.2.1",
   "author": "Chad Wilson <cmwilson919@gmail.com>",
   "dependencies": {
@@ -9,6 +9,8 @@
     "@fortawesome/free-brands-svg-icons": "^5.13.1",
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
     "@fortawesome/react-fontawesome": "^0.1.11",
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
     "@reach/dialog": "^0.10.0",
     "@reach/tabs": "^0.10.0",
     "@reach/visually-hidden": "^0.10.0",
