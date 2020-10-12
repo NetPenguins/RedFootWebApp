@@ -1,4 +1,4 @@
 [build]
   Functions = "functions"
-  Command = "npm run build"
+  Command = "echo SITE_RECAPTCHA_KEY=$SITE_RECAPTCHA_KEY >> .env.production && npm run build"
   Publish = "public"
