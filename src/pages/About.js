@@ -6,8 +6,8 @@ const About = () => {
   return (
     <Layout>
       <SEO title="About" />
-      <form style={{paddingTop: '5rem'}} name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true">
-        <input type="hidden" name="form-name" value="contact" />
+      <form style={{paddingTop: '5rem'}} name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact" data-netlify-recaptcha="true"/>
         <p>
           <label>Name: <input type="text" name="name" /></label>   
         </p>
