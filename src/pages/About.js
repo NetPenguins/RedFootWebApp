@@ -6,12 +6,16 @@ const About = () => {
   return (
     <Layout>
       <SEO title="About" />
-      <form style={{paddingTop: '10rem'}} name="contact" netlify netlify-honeypot data-netlify="true" data-netlify-recaptcha="true">
+      <form style={{paddingTop: '5rem'}} name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true">
+        <input type="hidden" name="form-name" value="contact" />
         <p>
-          <label>Name <input type="text" name="name" /></label>
+          <label>Name: <input type="text" name="name" /></label>   
         </p>
         <p>
-          <label>Email <input type="email" name="email" /></label>
+          <label>Email: <input type="email" name="email" /></label>
+        </p>
+        <p>
+          <label>Message: <textarea name="message"></textarea></label>
         </p>
         <div data-netlify-recaptcha="true"/>
         <p>
